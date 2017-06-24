@@ -4,7 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { GroupsComponent }    from './groups.componet';
 
 const groupsRoutes: Routes = [
-  { path: 'groups',  component: GroupsComponent }
+  { path: '',  component: GroupsComponent,
+      children:[
+	    {
+        path: ':id',
+        loadChildren: 'src-multipleroutes/app/group-detail/group-detail.module#GroupDetailModule' 
+	    }]  
+  }
 ];
 
 @NgModule({

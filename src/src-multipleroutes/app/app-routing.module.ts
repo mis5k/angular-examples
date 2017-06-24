@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   {
+    path: 'groups',
+    loadChildren: 'src-multipleroutes/app/groups/groups.module#GroupsModule'
+  },
+  {
     path: 'subjects',
     loadChildren: 'src-multipleroutes/app/subjects/subjects.module#SubjectsModule'
   },

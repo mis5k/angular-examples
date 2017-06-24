@@ -30,7 +30,6 @@ export class SubjectsComponent implements OnInit {
   }
 
   onSelect(subject: Subject) {
-   // this.router.navigate(['/detail']);
     this.router.navigate([subject.id], { relativeTo: this.route });
   }
 }

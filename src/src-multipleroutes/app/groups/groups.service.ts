@@ -13,4 +13,9 @@ let GROUPS = [
 @Injectable()
 export class GroupsService {
   getGroups() { return Promise.resolve(GROUPS); }
+  
+  getGroup(id: number | string) {
+    return Promise.resolve(GROUPS)
+      .then(groups => groups.find(group => group.id === +id));
+  }
 }

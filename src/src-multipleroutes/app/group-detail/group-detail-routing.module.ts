@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GroupDetailComponent }    from './group-detail.componet';
 
 const groupsRoutes: Routes = [
+   { path: '',  component: GroupDetailComponent }
 ];
 
 @NgModule({

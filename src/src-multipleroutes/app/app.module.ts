@@ -6,8 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule }        from './app-routing.module';
 
-import { GroupsModule }            from './groups/groups.module';
-
 
 @NgModule({
   declarations: [
@@ -17,8 +15,7 @@ import { GroupsModule }            from './groups/groups.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    GroupsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
