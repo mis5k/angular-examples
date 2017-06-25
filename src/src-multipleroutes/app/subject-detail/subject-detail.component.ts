@@ -5,7 +5,6 @@ import { Subject, SubjectsService }  from '../subjects/subjects.service';
 
 @Component({
   template: `
-    <h2>subject detail</h2>
     <div *ngIf="subject">
         <h2>개요</h2>
         <h4>제목: "{{ subject.name}}"</h4>
@@ -13,7 +12,8 @@ import { Subject, SubjectsService }  from '../subjects/subjects.service';
         <h2>상세 설명</h2>
         <h4>"{{ subject.explanation}}"</h4>
     </div>
-    `
+    `,
+  styleUrls: ['./subject-detail.componet.css']
 })
 
 export class SubjectDetailComponent implements OnInit {

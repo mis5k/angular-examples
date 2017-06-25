@@ -6,18 +6,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   template: `
-  <h2>subjects component</h2>
-  <ul>
-    <li *ngFor="let subject of subjects" (click)="onSelect(subject)">
-      {{subject.name}}
-    </li>
-  </ul>
+  <div>
+    <ul class="items">
+      <li *ngFor="let subject of subjects" [class.selected]="isSelected(subject)" (click)="onSelect(subject)">
+        {{subject.name}}
+      </li>
+    </ul>
+  </div>
   <router-outlet></router-outlet>
-  `
+  `,
+  styleUrls: ['./subjects.componet.css']
 })
 
 export class SubjectsComponent implements OnInit {
   subjects: Subject[];
+  private selectedId: number;
 
   constructor(
     private subjectsService: SubjectsService,
@@ -29,7 +32,10 @@ export class SubjectsComponent implements OnInit {
         this.subjectsService.getSubjects().then(subjects => this.subjects = subjects);
   }
 
+  isSelected(subject: Subject) { return subject.id === this.selectedId; }
+
   onSelect(subject: Subject) {
+    this.selectedId = subject.id;
     this.router.navigate([subject.id], { relativeTo: this.route });
   }
 }

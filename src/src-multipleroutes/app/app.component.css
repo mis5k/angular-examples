@@ -4,16 +4,16 @@ nav a {
   margin-right: 10px;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: #5499C7;
   border-radius: 4px;
 }
 nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+  background-color: #D4E6F1;
 }
 nav a.active {
-  color: #039be5;
+  background-color: #D4E6F1;
 }
+

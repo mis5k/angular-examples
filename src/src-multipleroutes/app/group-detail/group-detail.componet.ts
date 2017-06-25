@@ -5,7 +5,6 @@ import { Group, GroupsService }  from '../groups/groups.service';
 
 @Component({
   template: `
-    <h2>groups detail</h2>
     <div *ngIf="group">
       <ul>
         <li *ngFor="let name of group.member">
@@ -13,7 +12,8 @@ import { Group, GroupsService }  from '../groups/groups.service';
         </li>
       </ul>
     </div>
-  `
+  `,
+  styleUrls: ['./group-detail.componet.css']
 })
 
 export class GroupDetailComponent implements OnInit {

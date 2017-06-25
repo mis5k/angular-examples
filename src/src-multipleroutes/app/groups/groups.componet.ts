@@ -5,18 +5,21 @@ import { Group, GroupsService }  from './groups.service';
 
 @Component({
   template: `
-    <h2>groups component</h2>
-    <ul>
-        <li *ngFor="let group of groups" (click)="onSelect(group)">
-            {{group.name}}
-        </li>
-    </ul>
+    <div>
+        <ul class="items">
+            <li *ngFor="let group of groups" [class.selected]="isSelected(group)" (click)="onSelect(group)">
+                {{group.name}}
+            </li>
+        </ul>
+    </div>
     <router-outlet></router-outlet>
-  `
+  `,
+  styleUrls: ['./groups.componet.css']
 })
 
 export class GroupsComponent implements OnInit {
     groups: Group[];
+    private selectedId: number;
 
     constructor(
         private groupsService: GroupsService,
@@ -28,9 +31,10 @@ export class GroupsComponent implements OnInit {
         this.groupsService.getGroups().then(groups => this.groups = groups);
     }
 
+    isSelected(group: Group) { return group.id === this.selectedId; }
 
     onSelect(group: Group) {
-        console.log("AAAA  : "+group.id);
+        this.selectedId = group.id; 
         this.router.navigate([group.id], { relativeTo: this.route });
     }
 
