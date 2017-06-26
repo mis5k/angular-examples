@@ -3,15 +3,13 @@ div {
   background-color: #0A8A8A;
   display: inline-block;
   width: 30%;
-}
-router-outlet {
-  display: inline-block;
+  position: absolute;
+  margin: 10px;
 }
 .items {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 24em;
 }
 .items li {
   cursor: pointer;

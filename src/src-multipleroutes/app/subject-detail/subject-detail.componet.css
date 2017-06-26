@@ -2,4 +2,7 @@ div {
     background-color: #73DC69;
     width: 50%;
     display: inline-block;
+    height: 350px;
+    position: absolute;
+    left: 32%;
 }

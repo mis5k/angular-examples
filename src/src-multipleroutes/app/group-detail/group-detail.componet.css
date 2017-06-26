@@ -1,5 +1,11 @@
 div {
     background-color: #73DC69;
     width: 50%;
+    height: 180px;
     display: inline-block;
+    position: absolute;
+    left: 32%;
+}
+div ul li {
+  list-style-type: none;
 }

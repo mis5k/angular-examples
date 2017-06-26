@@ -2,7 +2,9 @@
 div {
   background-color: #0A8A8A;
   display: inline-block;
+  position: absolute;
   width: 30%;
+  margin: 10px;
 }
 router-outlet {
   display: inline-block;
@@ -11,7 +13,6 @@ router-outlet {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 24em;
 }
 .items li {
   cursor: pointer;
