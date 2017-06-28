@@ -40,7 +40,7 @@ System.config({
         }
       }
     },
-    "src-multipleroutes/app": {
+    "src-multipleroutes0/app": {
       "defaultExtension": "js",
       "meta": {
         "./*.js": {
@@ -48,7 +48,7 @@ System.config({
         }
       }
     }, 
-    "src-multipleroutes0/app": {
+    "src-multipleroutes/app": {
       "defaultExtension": "js",
       "meta": {
         "./*.js": {

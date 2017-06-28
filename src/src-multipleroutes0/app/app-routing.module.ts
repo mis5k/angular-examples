@@ -10,7 +10,7 @@ import { PageNotFoundComponent }    from './not-found.component';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/group',
+    redirectTo: 'group',
     pathMatch: 'full',
   },
   {
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     path: 'subject',
     loadChildren: 'src-multipleroutes0/app/subjects/subjects.module#SubjectsModule'
   }, 
-  { path: '.html',   redirectTo: '/group', pathMatch: 'full' },
+  { path: '.html',   redirectTo: 'group', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
