@@ -9,39 +9,36 @@
   </li>
 </ul>
 <div class="display">
-  <!--div class="items" *ngFor="let color of colors">
-    <input value="{{defacultCode}}">
-    <div [style.background-color]="color.code">
-    </div>
-    {{color.id}}
-    <router-outlet my-router-outlet="color.id"></router-outlet>
-  </div-->
+  <!-- div class="items" *ngFor="let item of items">
+    <input value="{{defaultCode}}" (change)="onChange(item, $event)">
+    <router-outlet [attr.name]="item"></router-outlet>
+  </div -->
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p1', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p1', $event)">
     <router-outlet name="p1"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p2', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p2', $event)">
     <router-outlet name="p2"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p3', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p3', $event)">
     <router-outlet name="p3"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p4', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p4', $event)">
     <router-outlet name="p4"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p5', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p5', $event)">
     <router-outlet name="p5"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p6', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p6', $event)">
     <router-outlet name="p6"></router-outlet>
   </div>
   <div class="items">
-    <input value="{{defacultCode}}" (change)="onChange('p7', $event)">
+    <input value="{{defaultCode}}" (change)="onChange('p7', $event)">
     <router-outlet name="p7"></router-outlet>
   </div>
 </div>

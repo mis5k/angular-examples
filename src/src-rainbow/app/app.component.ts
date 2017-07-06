@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit { 
-    defacultCode:String;
+    defaultCode:String;
+    items: String[];
+
 
     constructor(
         private logger:LoggerService, 
@@ -19,7 +21,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.logger.startLoggingRouterEvent();
-        this.defacultCode ="color";
+        this.defaultCode ="color";
+        this.items = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'];
     } 
 
     onChange(name:string, event:any) {
