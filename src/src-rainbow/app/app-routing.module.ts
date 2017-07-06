@@ -5,37 +5,37 @@ import { PaletteItemComponent } from './palette-item.component';
 
 const routes: Routes = [
   {
-    path: ':p1',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p1'
   },
   {
-    path: ':p2',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p2'
   },
   {
-    path: ':p3',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p3'
   },
   {
-    path: ':p4',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p4'
   },
   {
-    path: ':p5',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p5'
   },
   {
-    path: ':p6',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p6'
   },
   {
-    path: ':p7',
+    path: ':color',
     component: PaletteItemComponent,
     outlet: 'p7'
   }

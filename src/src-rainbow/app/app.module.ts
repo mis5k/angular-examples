@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module'; 
-import { AppService } from './app.service';
 
 import { AppComponent } from './app.component';
 import { PaletteItemComponent } from './palette-item.component';
@@ -22,7 +21,6 @@ import { MyRouterOutletDirective } from './my-router-outlet.derctive';
         PaletteItemComponent,
         MyRouterOutletDirective
     ],
-    providers: [AppService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
