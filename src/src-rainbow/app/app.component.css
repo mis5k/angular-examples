@@ -1,0 +1,12 @@
+.display {
+    display: inline-table;
+}
+.items {
+    display: inline-block;
+    width: 100px;
+}
+.items > input {
+    width: 100%;
+    height: 15px;
+    box-sizing: border-box;
+}

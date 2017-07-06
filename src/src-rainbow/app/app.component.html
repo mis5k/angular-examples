@@ -1,0 +1,48 @@
+<h2>Palette</h2>
+<ul>
+  <li>
+    <a [routerLink]="['/',{ outlets: { p1: ['red'], p2:['orange'], p3:['yellow'], p4:['green'], p5:['blue'], p6:['navy'], p7:['purple'] } }]">Rainbow</a>
+  </li>
+  <li>
+    <a [routerLink]="['/',{ outlets: { p1: ['#000000'], p2:['#333333'], p3:['#666666'], p4:['#999999'], p5:['#bbbbbb'], p6:['#cccccc'], p7:['#dddddd'] } }]">Gray scale</a>
+    <!--a [routerLink]="['/',{ outlets: { p1: ['#23222'], p2:['#23444'], p3:['#23666'], p4:['#23888'], p5:['#23aaa'], p6:['#23ccc'], p7:['#23e'] } }]">Gray scale</a-->
+  </li>
+</ul>
+<div class="display">
+  <!--div class="items" *ngFor="let color of colors">
+    <input value="{{defacultCode}}">
+    <div [style.background-color]="color.code">
+    </div>
+    {{color.id}}
+    <router-outlet my-router-outlet="color.id"></router-outlet>
+  </div-->
+  <!--router-outlet></router-outlet-->
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p1"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p2"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p3"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p4"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p5"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p6"></router-outlet>
+  </div>
+  <div class="items">
+    <input value="{{defacultCode}}">
+    <router-outlet name="p7"></router-outlet>
+  </div>
+</div>

@@ -21,7 +21,8 @@ module.exports = {
           { from: /\/playground.*/, to: '/playground.html' },
           { from: /\/calculator.*/, to: '/calculator.html' },
           { from: /\/multipleroutes0.*/, to: '/multipleroutes0.html' },
-          { from: /\/multipleroutes.*/, to: '/multipleroutes.html' }
+          { from: /\/multipleroutes.*/, to: '/multipleroutes.html' },
+          { from: /\/rainbow.*/, to: '/rainbow.html' }
         ],
         verbose: false
       })
