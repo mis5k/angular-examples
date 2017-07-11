@@ -22,6 +22,7 @@ module.exports = {
           { from: /\/calculator.*/, to: '/calculator.html' },
           { from: /\/multipleroutes0.*/, to: '/multipleroutes0.html' },
           { from: /\/multipleroutes.*/, to: '/multipleroutes.html' },
+          { from: /\/rainbow-query.*/, to: '/rainbow-query.html' },
           { from: /\/rainbow.*/, to: '/rainbow.html' }
         ],
         verbose: false
