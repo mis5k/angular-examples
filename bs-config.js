@@ -1,5 +1,5 @@
 module.exports = {
-  // browser: "firefox",
+  browser: "firefox",
   server: {
     baseDir: "src",
     "routes": {
@@ -14,6 +14,7 @@ module.exports = {
         // change HTML : <base href="/toh">
         rewrites: [
           { from: /\/hello.*/, to: '/hello.html' },
+          { from: /\/toh-firebase.*/, to: '/toh-firebase.html' },
           { from: /\/toh.*/, to: '/toh.html' },
           { from: /\/top10.*/, to: '/top10.html' },
           { from: /\/template-syntax.*/, to: '/template-syntax.html' },
@@ -21,9 +22,10 @@ module.exports = {
           { from: /\/playground.*/, to: '/playground.html' },
           { from: /\/calculator.*/, to: '/calculator.html' },
           { from: /\/multipleroutes0.*/, to: '/multipleroutes0.html' },
-          { from: /\/multipleroutes.*/, to: '/multipleroutes.html' },
+          { from: /\/multipleroutes1.*/, to: '/multipleroutes1.html' },
           { from: /\/rainbow-query.*/, to: '/rainbow-query.html' },
-          { from: /\/rainbow.*/, to: '/rainbow.html' }
+          { from: /\/rainbow.*/, to: '/rainbow.html' },
+          { from: /\/firebase.*/, to: '/firebase.html' }
         ],
         verbose: false
       })

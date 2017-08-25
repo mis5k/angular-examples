@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { PaletteItemComponent } from './palette-item.component';
-import { MyRouterOutletDirective } from './my-router-outlet.derctive';
 
 @NgModule({
     imports: [
@@ -18,8 +17,7 @@ import { MyRouterOutletDirective } from './my-router-outlet.derctive';
     ],
     declarations: [
         AppComponent,
-        PaletteItemComponent,
-        MyRouterOutletDirective
+        PaletteItemComponent
     ],
     bootstrap: [AppComponent]
 })

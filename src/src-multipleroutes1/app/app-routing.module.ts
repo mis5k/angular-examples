@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
   {
     path: 'groups',
-    loadChildren: 'src-multipleroutes/app/groups/groups.module#GroupsModule'
+    loadChildren: 'src-multipleroutes1/app/groups/groups.module#GroupsModule'
   },
   {
     path: 'subjects',
-    loadChildren: 'src-multipleroutes/app/subjects/subjects.module#SubjectsModule'
+    loadChildren: 'src-multipleroutes1/app/subjects/subjects.module#SubjectsModule'
   },
   { path: '',   redirectTo: '/groups', pathMatch: 'full' }
 ];
