@@ -1,0 +1,12 @@
+<h1>
+  {{title}}
+</h1>
+<div>
+  <input class="radioBtn" type="radio" name="black" [(ngModel)]="circle.type" value="black">black
+  <input class="radioBtn" type="radio" name="white" [(ngModel)]="circle.type" value="white">white
+</div>
+<div class="row" *ngFor="let row of board">
+   <div class="col" *ngFor="let cell of row" (click)="setCell(cell)">
+     <div class="circle" [ngClass]="cell.style">{{cell.row}}{{cell.col}}</div>
+   </div>
+</div>
