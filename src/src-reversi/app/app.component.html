@@ -1,12 +1,12 @@
-<h1>
-  {{title}}
-</h1>
 <div>
-  <input class="radioBtn" type="radio" name="black" [(ngModel)]="circle.type" value="black">black
-  <input class="radioBtn" type="radio" name="white" [(ngModel)]="circle.type" value="white">white
+  <input class="radioBtn" type="radio" name="black" [(ngModel)]="disk.type" value="-1">black
+  <input class="radioBtn" type="radio" name="white" [(ngModel)]="disk.type" value="1">white
+</div>
+<div>
+  <p>black: {{score.black}}  | white: {{score.white}}</p> 
 </div>
 <div class="row" *ngFor="let row of board">
    <div class="col" *ngFor="let cell of row" (click)="setCell(cell)">
-     <div class="circle" [ngClass]="cell.disk">{{cell.row}}{{cell.col}}</div>
+     <div class="circle" [class.black]="cell.state == -1" [class.white]="cell.state == 1">{{cell.row}}{{cell.col}}</div>
    </div>
 </div>
