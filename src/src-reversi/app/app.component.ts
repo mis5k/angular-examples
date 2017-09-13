@@ -21,13 +21,13 @@ export class AppComponent implements OnInit {
     white: 0
   };
 
-
   constructor( 
   ) {}
 
   ngOnInit(): void {
     this.createBoard();
-    this.init();
+    this.initBoard();
+    this.setScore();
   } 
 
   createBoard() {
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  init() {
+  initBoard() {
     // 33 34
     // 43 44
     let center1 = this.board_size/2 - 1;
@@ -48,19 +48,9 @@ export class AppComponent implements OnInit {
     this.board[center1][center2].state = CellState.Black;
     this.board[center2][center1].state = CellState.Black;
     this.board[center2][center2].state = CellState.White;
-
-    //this.score.black = 2;
-   // this.score.white = 2;
-     this.getScore();
   }
 
   setCell(cell:Cell) {
-    console.log(this.disk.type);
-    this.setChanged(cell);
-    this.getScore();
-  }
-
-  setChanged (cell:Cell) {
     /* 
     cell.row, cell.col
     cell.row -1    
@@ -70,70 +60,71 @@ export class AppComponent implements OnInit {
                cell.col+1
     cell.row -1  cell.col +1
     cell.row +1  cell.col -1
-
-
     cell.row +1  cell.col +1
     cell.row -1  cell.col -1  
     */
-  // this.circle.type
-   
-   console.log("setChanged");
-   for(let row1: number = -1; row1 <= 1; row1++){
-    for(let col1: number = -1; col1 <= 1; col1++){
-        if(row1 == 0 &&  col1 == 0) 
+    console.log(this.disk.type);
+    for(let dirX: number = -1; dirX <= 1; dirX++){
+      for(let dirY: number = -1; dirY <= 1; dirY++){
+        if(dirX == 0 && dirY == 0) 
           continue;
 
-          let row = cell.row + row1;
-          let col = cell.col + col1;
-          let counter = 0;
-          let close_disk = false;
-          for(let i=0; i< this.board_size; i++) {
-            if(row < 0 || row >= this.board_size 
-                  || col < 0 || col >= this.board_size) { 
-              break;
-            }
-            
-            if(this.board[row][col].state == CellState.Empty) {
-              break;
-            } else if(this.board[row][col].state == this.disk.type) {
-              if(counter == 0) {
-                break; 
-              } else { 
-                close_disk = true;
-                break;
-              }    
-            } else if(this.board[row][col].state != this.disk.type) {
-              counter++;
-            }
-
-            row += row1;
-            col += col1;  
-          }
-          
-          console.log("close_disk : " + close_disk);
-          if(close_disk) {
+        if(this.checkLastDisk(cell, dirX, dirY)) {
             cell.state = this.disk.type;
-            let row = cell.row + row1;
-            let col = cell.col + col1; 
-            for(let i=0; i< this.board_size; i++) {
-              if(this.board[row][col].state != this.disk.type) {
-                this.board[row][col].state = this.disk.type;
-              } else {
-                break;
-              }
-            }
+            this.changeDisk(cell, dirX, dirY);          
             break;
-          }
+        }
       }  
           
-    } 
+    }
+    this.setScore();
   }
 
-  getScore() {
+  changeDisk (cell:Cell, dirX:number, dirY:number) {
+    console.log("ChangeDisk");
+    let row = cell.row + dirX;
+    let col = cell.col + dirY; 
+    for(let i=0; i< this.board_size; i++) {
+      if(this.board[row][col].state != this.disk.type) {
+        this.board[row][col].state = this.disk.type;
+      } else {
+        break;
+      }
+    }
+  }
+
+  checkLastDisk(cell:Cell, dirX:number, dirY:number) {
+    let row = cell.row + dirX;
+    let col = cell.col + dirY;
+    let counter = 0;
+
+    for(let i=0; i< this.board_size; i++) {
+      if(row < 0 || row >= this.board_size 
+          || col < 0 || col >= this.board_size) { 
+          return false;
+      }
+            
+      if(this.board[row][col].state == CellState.Empty) {
+        return false;
+      } else if(this.board[row][col].state == this.disk.type) {
+        if(counter == 0) {
+          return false;
+        }
+        return true;
+      } else if(this.board[row][col].state != this.disk.type) {
+        counter++;
+      }
+      row += dirX;
+      col += dirY;  
+    }
+    return false;
+  }
+
+  setScore() {
     this.score.black = 0;
     this.score.white = 0;
-    for(let row: number = 0; row < this.board_size; row++){ 
-      for(let col: number = 0; col < this.board_size; col++){
+    for(let row: number = 0; row < this.board_size; row++) { 
+      for(let col: number = 0; col < this.board_size; col++) {
 
          if(this.board[row][col].state == CellState.Black) {
               this.score.black++;

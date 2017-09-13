@@ -7,6 +7,6 @@
 </div>
 <div class="row" *ngFor="let row of board">
    <div class="col" *ngFor="let cell of row" (click)="setCell(cell)">
-     <div class="circle" [class.black]="cell.state == -1" [class.white]="cell.state == 1">{{cell.row}}{{cell.col}}</div>
+     <div class="disk" [class.black]="cell.state == -1" [class.white]="cell.state == 1">{{cell.row}}{{cell.col}}</div>
    </div>
 </div>
