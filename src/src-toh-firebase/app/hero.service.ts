@@ -18,7 +18,7 @@ export class HeroService {
   constructor(private http: Http, 
     private db: AngularFireDatabase) { }
 
-  getHeroes(): FirebaseListObservable<Hero[]> {
+  getHeroes(): any {
     return this.db.list(this.heroesUrl);
   }
 

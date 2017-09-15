@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Cell } from './cell';
-
-const enum CellState {
-    Black = -1,
-    Empty = 0,
-    White = 1
-}
+import { Cell } from './cell';;
+import { CellState } from './cellState';
+import { ReversiService } from './reversi.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   board_size = 8; 
   board: Cell[][] = [];
@@ -22,35 +20,57 @@ export class AppComponent implements OnInit {
   };
 
   constructor( 
+    private reversiService: ReversiService,
   ) {}
 
   ngOnInit(): void {
+
     this.createBoard();
     this.initBoard();
     this.setScore();
   } 
 
   createBoard() {
+    /*
     for(let row: number = 0; row < this.board_size; row++){
       this.board[row] = []; 
       for(let col: number = 0; col < this.board_size; col++){
         this.board[row][col] = new Cell(row, col, CellState.Empty);
       } 
     }
+    */
+    this.reversiService.createBoard();
+    this.reversiService.getBoard().subscribe(board => {
+      this.board = [];
+      board.forEach((t, i) => {
+        if(i % 8 == 0) {
+          let row = (i == 0) ? 0 : ( i / 8);
+          this.board.push(board.slice(row * 8, row * 8 + 8)); 
+        }
+      });     
+    }); 
   }
+ 
 
   initBoard() {
     // 33 34
     // 43 44
     let center1 = this.board_size/2 - 1;
     let center2 = this.board_size/2;
+
     this.board[center1][center1].state = CellState.White;
     this.board[center1][center2].state = CellState.Black;
     this.board[center2][center1].state = CellState.Black;
     this.board[center2][center2].state = CellState.White;
+  
+    this.reversiService.updateBoard(this.board[center1][center1], this.board[center1][center1].$key);
+    this.reversiService.updateBoard(this.board[center1][center2], this.board[center1][center2].$key);
+    this.reversiService.updateBoard(this.board[center2][center1], this.board[center2][center1].$key);
+    this.reversiService.updateBoard(this.board[center2][center2], this.board[center2][center2].$key);
+    
   }
 
-  setCell(cell:Cell) {
+  setCell(cell:Cell, key:any) {
     /* 
     cell.row, cell.col
     cell.row -1    
@@ -63,6 +83,7 @@ export class AppComponent implements OnInit {
     cell.row +1  cell.col +1
     cell.row -1  cell.col -1  
     */
+  //  console.log(key);
     console.log(this.disk.type);
     for(let dirX: number = -1; dirX <= 1; dirX++){
       for(let dirY: number = -1; dirY <= 1; dirY++){
@@ -71,6 +92,7 @@ export class AppComponent implements OnInit {
 
         if(this.checkLastDisk(cell, dirX, dirY)) {
             cell.state = this.disk.type;
+            this.reversiService.updateBoard(cell, cell.$key);
             this.changeDisk(cell, dirX, dirY);          
             break;
         }
@@ -87,6 +109,7 @@ export class AppComponent implements OnInit {
     for(let i=0; i< this.board_size; i++) {
       if(this.board[row][col].state != this.disk.type) {
         this.board[row][col].state = this.disk.type;
+        this.reversiService.updateBoard(this.board[row][col], this.board[row][col].$key);
       } else {
         break;
       }
