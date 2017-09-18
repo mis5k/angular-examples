@@ -7,7 +7,11 @@ import { CellState } from './cellState';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
 
-
+export class User {
+  black: boolean;
+  white: boolean;
+  $key: string;
+}
 
 @Injectable()
 export class ReversiService {
@@ -24,27 +28,29 @@ export class ReversiService {
     return this.db.list(this.boardUrl);
   }
 
-  getUsers(): FirebaseListObservable<Cell[]> {
+  getUsers(): FirebaseListObservable<User[]> {
     return this.db.list(this.userUrl);
   }
 
   createBoard(): any{
-    const Board = this.db.list(this.boardUrl)
-    Board.remove();
-  
+    const board = this.db.list(this.boardUrl)
+    
+    board.remove();
     for(let row: number = 0; row < this.board_size; row++){
        // this.board[row]=[]; 
       for(let col: number = 0; col < this.board_size; col++){
         // this.board[row][col] = new Cell(row, col, CellState.Empty); 
-        Board.push(new Cell(row, col, CellState.Empty));
+        board.push(new Cell(row, col, CellState.Empty));
       }
     }
   }
 
   createUser(): any {
-    console.log();
+    const user = this.db.list(this.userUrl)
+    user.remove();
+
     return this.db.list(this.userUrl).push({
-      black: true,
+      black: false,
       white: false
     }); 
   }
@@ -53,8 +59,8 @@ export class ReversiService {
     return this.db.list(this.boardUrl).update($key, cell);
   }
 
-  updateUser(): any {
-   // return this.db.list(this.userUrl).update(cell.$key, cell);
+  updateUser(user:User, $key:string): any {
+    return this.db.list(this.userUrl).update($key, user);
   }
 
   private handleError(error: any) {
