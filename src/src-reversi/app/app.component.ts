@@ -43,9 +43,9 @@ export class AppComponent implements OnInit {
     this.reversiService.getBoard().subscribe(board => {
       this.board = [];
       board.forEach((t, i) => {
-        if(i % 8 == 0) {
-          let row = (i == 0) ? 0 : ( i / 8);
-          this.board.push(board.slice(row * 8, row * 8 + 8)); 
+        if(i % this.board_size == 0) {
+          let row = (i == 0) ? 0 : ( i / this.board_size);
+          this.board.push(board.slice(row * this.board_size, (row + 1) * this.board_size)); 
         }
       });     
     }); 
