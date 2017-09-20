@@ -2,6 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Observable }    from 'rxjs/Observable';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Cell } from './cell';
+import { Board } from './board';
 import { CellState } from './cellState';
 
 import 'rxjs/add/operator/toPromise';
@@ -24,7 +25,7 @@ export class ReversiService {
   board_size = 8; 
   board: Cell[][] = [];
 
-  getBoard(): FirebaseListObservable<Cell[]> {
+  getBoard(): FirebaseListObservable<Cell[][][]> {
     return this.db.list(this.boardUrl);
   }
 
@@ -37,12 +38,13 @@ export class ReversiService {
     
     board.remove();
     for(let row: number = 0; row < this.board_size; row++){
-       // this.board[row]=[]; 
+        this.board[row]=[]; 
       for(let col: number = 0; col < this.board_size; col++){
-        // this.board[row][col] = new Cell(row, col, CellState.Empty); 
-        board.push(new Cell(row, col, CellState.Empty));
+        this.board[row][col] = new Cell(row, col, CellState.Empty); 
+       // board.push(new Cell(row, col, CellState.Empty));
       }
     }
+    board.push(this.board);
   }
 
   createUser(): any {

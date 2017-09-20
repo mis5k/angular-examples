@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cell } from './cell';;
 import { CellState } from './cellState';
+import { Board } from './board';
 import { ReversiService } from './reversi.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
@@ -13,7 +14,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class AppComponent implements OnInit {
   board_size = 8; 
   board: Cell[][] = [];
+ // board:Board;
   disk = { type: CellState.Black };
+  turn:CellState;
   score = {
     black: 0,
     white: 0
@@ -28,6 +31,8 @@ export class AppComponent implements OnInit {
     this.createBoard();
     this.initBoard();
     this.setScore();
+    this.turn = CellState.Black;
+    this.disk.type = CellState.Black;
   } 
 
   createBoard() {
@@ -41,14 +46,10 @@ export class AppComponent implements OnInit {
     */
     this.reversiService.createBoard();
     this.reversiService.getBoard().subscribe(board => {
-      this.board = [];
-      board.forEach((t, i) => {
-        if(i % this.board_size == 0) {
-          let row = (i == 0) ? 0 : ( i / this.board_size);
-          this.board.push(board.slice(row * this.board_size, (row + 1) * this.board_size)); 
-        }
-      });     
-    }); 
+      this.board = board[0]; 
+    //  console.log(board[0]);   
+    });
+     
   }
  
 
@@ -62,85 +63,59 @@ export class AppComponent implements OnInit {
     this.board[center1][center2].state = CellState.Black;
     this.board[center2][center1].state = CellState.Black;
     this.board[center2][center2].state = CellState.White;
-  
+    
+  /*
     this.reversiService.updateBoard(this.board[center1][center1], this.board[center1][center1].$key);
     this.reversiService.updateBoard(this.board[center1][center2], this.board[center1][center2].$key);
     this.reversiService.updateBoard(this.board[center2][center1], this.board[center2][center1].$key);
     this.reversiService.updateBoard(this.board[center2][center2], this.board[center2][center2].$key);
-    
+    */
   }
 
   setCell(cell:Cell, key:any) {
-    /* 
-    cell.row, cell.col
-    cell.row -1    
-    cell.row +1
-  
-               cell.col-1
-               cell.col+1
-    cell.row -1  cell.col +1
-    cell.row +1  cell.col -1
-    cell.row +1  cell.col +1
-    cell.row -1  cell.col -1  
-    */
-  //  console.log(key);
-    console.log(this.disk.type);
-    for(let dirX: number = -1; dirX <= 1; dirX++){
-      for(let dirY: number = -1; dirY <= 1; dirY++){
+    for(let dirX = -1; dirX <= 1; dirX++){
+      for(let dirY = -1; dirY <= 1; dirY++){
         if(dirX == 0 && dirY == 0) 
           continue;
 
-        if(this.checkLastDisk(cell, dirX, dirY)) {
+        let list = this.getreversibleDisk(cell, dirX, dirY);
+        if(list.length != 0) {
+          cell.state = this.disk.type;
+          list.forEach((cell) => {
             cell.state = this.disk.type;
-            this.reversiService.updateBoard(cell, cell.$key);
-            this.changeDisk(cell, dirX, dirY);          
-            break;
+          });
         }
-      }  
-          
+      } 
     }
     this.setScore();
   }
 
-  changeDisk (cell:Cell, dirX:number, dirY:number) {
-    console.log("ChangeDisk");
-    let row = cell.row + dirX;
-    let col = cell.col + dirY; 
-    for(let i=0; i< this.board_size; i++) {
-      if(this.board[row][col].state != this.disk.type) {
-        this.board[row][col].state = this.disk.type;
-        this.reversiService.updateBoard(this.board[row][col], this.board[row][col].$key);
-      } else {
-        break;
-      }
-    }
-  }
-
-  checkLastDisk(cell:Cell, dirX:number, dirY:number) {
+  getreversibleDisk(cell:Cell, dirX:number, dirY:number) {
     let row = cell.row + dirX;
     let col = cell.col + dirY;
-    let counter = 0;
+    let list:Cell[] = [];
 
-    for(let i=0; i< this.board_size; i++) {
-      if(row < 0 || row >= this.board_size 
-          || col < 0 || col >= this.board_size) { 
-          return false;
-      }
-            
+    while (this.isInRange(row, col)) {
       if(this.board[row][col].state == CellState.Empty) {
-        return false;
+        list = [];
+        break;
       } else if(this.board[row][col].state == this.disk.type) {
-        if(counter == 0) {
-          return false;
-        }
-        return true;
+        break;
       } else if(this.board[row][col].state != this.disk.type) {
-        counter++;
+        list.push(this.board[row][col]);
       }
       row += dirX;
       col += dirY;  
     }
-    return false;
+    return list;
+  }
+
+  isInRange(row:number, col:number) {
+    if(row < 0 || row >= this.board_size 
+      || col < 0 || col >= this.board_size) { 
+      return false;
+    }
+    return true;
   }
 
   setScore() {
