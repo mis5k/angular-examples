@@ -39,3 +39,6 @@ h1 {
 .white {
   background: white;
 }
+.selected {
+  background: gray;
+}

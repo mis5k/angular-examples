@@ -1,6 +1,21 @@
 <div>
-  <input class="radioBtn" type="radio" name="black" [(ngModel)]="disk.type" value="-1">black
-  <input class="radioBtn" type="radio" name="white" [(ngModel)]="disk.type" value="1">white
+  <div>
+    <input type="text" #newName/><button (click)="createGameRoom(newName.value)">make</button>
+  </div>
+  <div>
+    <input  type="text" #name/><button (click)="joinGameRoom(name.value)">join</button>
+  </div>
+  <div *ngIf="showUserBtn">
+    <button [disabled]="user.black" [class.selected]="userType == -1" (click)="changeDiskType(-1)">black</button>
+    <button [disabled]="user.white" [class.selected]="userType == 1" (click)="changeDiskType(1)">white</button>
+    <button (click)="selectDiskType()">select</button>
+  </div>
+  <div>
+    <button (click)="startGame()">start</button>
+  </div>
+</div>
+<div>
+  <p>turn: {{disk.type}}</p>  
 </div>
 <div>
   <p>black: {{score.black}}  | white: {{score.white}}</p> 
