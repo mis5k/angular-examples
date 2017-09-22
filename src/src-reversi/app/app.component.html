@@ -14,8 +14,8 @@
     <button (click)="startGame()">start</button>
   </div>
 </div>
-<div>
-  <p>turn: {{disk.type}}</p>  
+<div *ngIf="user">
+  <p>turn: {{user.turn}}</p>  
 </div>
 <div>
   <p>black: {{score.black}}  | white: {{score.white}}</p> 

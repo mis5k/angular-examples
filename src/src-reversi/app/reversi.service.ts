@@ -43,6 +43,16 @@ export class ReversiService {
     }});
   }
 
+  initBoard() {
+    let center1 = this.board_size/2 - 1;
+    let center2 = this.board_size/2;
+
+    this.board[center1][center1].state = CellState.White;
+    this.board[center1][center2].state = CellState.Black;
+    this.board[center2][center1].state = CellState.Black;
+    this.board[center2][center2].state = CellState.White;
+  }
+
   createBoard(name:string): any {
     let db = this.db.list(this.gameInfoUrl);
     for(let row: number = 0; row < this.board_size; row++){
@@ -51,6 +61,7 @@ export class ReversiService {
         this.board[row][col] = new Cell(row, col, CellState.Empty); 
       }
     }
+    this.initBoard();
 
     db.push({
       "name": name,
@@ -65,7 +76,7 @@ export class ReversiService {
       "name": name,
       "black": false,
       "white": false,
-      "turn": 0  
+      "turn": -1  
     }); 
   }
 

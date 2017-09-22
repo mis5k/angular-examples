@@ -17,14 +17,15 @@ export class AppComponent implements OnInit {
   board: Cell[][] = [];
   gameInfo: GameInfo;
   name: string;
-  disk = { type: CellState.Black };
+ // disk = { type: CellState.Black };
   turn:CellState;
   score = {
     black: 0,
     white: 0
   };
   user:User;
-  userType:number;
+  userType:CellState;
+  myDiskType:CellState;
   showUserBtn:Boolean;
   ONE_HOUR:number = 1000 * 60 * 60;
 
@@ -37,12 +38,13 @@ export class AppComponent implements OnInit {
     this.reversiService.getAllRoomInfo().subscribe(infos => {
       infos.forEach(info => {
         let gap = Date.now() - info.time;
-        console.log(gap);
         if(gap > this.ONE_HOUR) {
           this.reversiService.deleteGameInfo(info.$key);
+          this.reversiService.getUsers(info.name).remove();
         }
       });
     });
+    this.myDiskType = 0;
   } 
 
   createGameRoom(name:string) {
@@ -58,7 +60,6 @@ export class AppComponent implements OnInit {
         this.reversiService.getUsers(name).subscribe(user => {
           this.user = user[0];
           this.showUserBtn = true;
-          console.log(user);
         }); 
       }
     });
@@ -73,14 +74,7 @@ export class AppComponent implements OnInit {
         this.name = name;
         this.reversiService.getUsers(name).subscribe(user => {
           this.user = user[0];
-          if(this.user.black && this.user.white) {
-            this.showUserBtn = false;
-            this.user = null;
-            this.disk.type = CellState.Empty;
-            this.createBoard();
-          } else {
-            this.showUserBtn = true;
-          }
+          this.showUserBtn = true;
         }); 
       } else {
         console.log("not exists!");
@@ -89,40 +83,25 @@ export class AppComponent implements OnInit {
   }
 
   createBoard() {
-  
     this.reversiService.getGameRoomInfo(this.name).subscribe(info => {
       console.log(info);
       this.gameInfo = info[0];
       this.board = this.gameInfo.board;
-      this.initBoard();
-    });
+    });    
   }
  
-
-  initBoard() {
-    let center1 = this.board_size/2 - 1;
-    let center2 = this.board_size/2;
-
-    this.board[center1][center1].state = CellState.White;
-    this.board[center1][center2].state = CellState.Black;
-    this.board[center2][center1].state = CellState.Black;
-    this.board[center2][center2].state = CellState.White;
-
-    this.reversiService.updateGameInfo(this.gameInfo);
-  }
-
   changeDiskType(type:CellState) {
     this.userType = type; 
   }
 
   selectDiskType() {
-    this.showUserBtn = false;
     if(this.userType == CellState.Black) {
       this.user.black = true;
+      this.myDiskType = CellState.Black;
     } else if(this.userType == CellState.White) {
       this.user.white = true;
+      this.myDiskType = CellState.White;
     }
-    console.log();
     this.reversiService.updateUser(this.user);
   }
 
@@ -131,42 +110,51 @@ export class AppComponent implements OnInit {
   }
 
   setCell(cell:Cell, key:any) {
-    let changedTurn = false;
-    for(let dirX = -1; dirX <= 1; dirX++){
-      for(let dirY = -1; dirY <= 1; dirY++){
-        if(dirX == 0 && dirY == 0) 
-          continue;
+    if(this.myDiskType == this.user.turn) {
+      let changedTurn = false;
+      for(let dirX = -1; dirX <= 1; dirX++){
+        for(let dirY = -1; dirY <= 1; dirY++){
+          if(dirX == 0 && dirY == 0) 
+            continue;
 
-        let list = this.getreversibleDisk(cell, dirX, dirY);
-        if(list.length > 0) {
-          changedTurn = true;
-          list.forEach((cell) => {
-            cell.state = this.disk.type;
-          });
-        }
+          let list = this.getreversibleDisk(cell, dirX, dirY);
+          console.log(list);
+          if(list.length > 0) {
+            changedTurn = true;
+            list.forEach((cell) => {
+              cell.state = this.user.turn;
+            });
+          }
+        } 
       } 
-    } 
 
-    if(changedTurn) {
-      cell.state = this.disk.type;
-      this.disk.type = (this.disk.type == CellState.Black) ? CellState.White : CellState.Black;
-      this.reversiService.updateGameInfo(this.gameInfo);
+      if(changedTurn) {
+        cell.state = this.user.turn;
+        this.user.turn = (this.user.turn == CellState.Black) ? CellState.White : CellState.Black;
+        this.gameInfo.board = this.board;
+        this.reversiService.updateGameInfo(this.gameInfo);
+        this.reversiService.updateUser(this.user);
+      }
+      this.setScore();
     }
-    this.setScore();
   }
 
   getreversibleDisk(cell:Cell, dirX:number, dirY:number) {
+    console.log("getreversibleDisk");
     let row = cell.row + dirX;
     let col = cell.col + dirY;
     let list:Cell[] = [];
 
     while (this.isInRange(row, col)) {
+      console.log("AAAA");
       if(this.board[row][col].state == CellState.Empty) {
         list = [];
         break;
-      } else if(this.board[row][col].state == this.disk.type) {
+      } else if(this.board[row][col].state == this.user.turn) {
         break;
-      } else if(this.board[row][col].state != this.disk.type) {
+      } else if(this.board[row][col].state != this.user.turn) {
+        console.log("BBBBBB");
+        console.log(this.board[row][col]);
         list.push(this.board[row][col]);
       }
       row += dirX;
