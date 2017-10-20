@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
 
   joinGameRoom(name:string) {
     this.reversiService.verifyUser(name).once("value", snapshot => {
-      const userData = snapshot.val();
+      const userData:User = snapshot.val();
       console.log(userData);
       if (userData) {
         console.log("exists!");
@@ -146,15 +146,12 @@ export class AppComponent implements OnInit {
     let list:Cell[] = [];
 
     while (this.isInRange(row, col)) {
-      console.log("AAAA");
       if(this.board[row][col].state == CellState.Empty) {
         list = [];
         break;
       } else if(this.board[row][col].state == this.user.turn) {
         break;
       } else if(this.board[row][col].state != this.user.turn) {
-        console.log("BBBBBB");
-        console.log(this.board[row][col]);
         list.push(this.board[row][col]);
       }
       row += dirX;
