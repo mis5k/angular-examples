@@ -23,6 +23,7 @@
 <div class="row" *ngFor="let row of board">
     <div class="col" *ngFor="let cell of row" (click)="setCell(cell)">
       <!--div class="disk" [class.black]="cell.state == -1" [class.white]="cell.state == 1">{{cell.row}}{{cell.col}}</div-->
+      <!-- div class="disk" [hidden]="cell.state == 0" [@state]="cell.flip" [class.black]="cell.state == -1" [class.white]="cell.state == 1" -->
       <div class="disk" [hidden]="cell.state == 0" [class.black]="cell.state == -1" [class.white]="cell.state == 1">
         <div>
         </div>

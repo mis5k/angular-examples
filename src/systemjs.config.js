@@ -135,7 +135,7 @@ System.config({
   },
 
   map: {
-    "@angular/animations": "npm:@angular/animations@4.3.5",
+    "@angular/animations": "npm:@angular/animations@4.4.6",
     "@angular/common": "npm:@angular/common@4.3.5",
     "@angular/compiler": "npm:@angular/compiler@4.3.5",
     "@angular/core": "npm:@angular/core@4.3.5",
@@ -147,14 +147,14 @@ System.config({
     "angular-in-memory-web-api": "npm:angular-in-memory-web-api@0.3.2",
     "angularfire2": "npm:angularfire2@4.0.0-rc.2",
     "core-js": "npm:core-js@2.5.0",
-    "rxjs": "npm:rxjs@5.4.3",
+    "rxjs": "npm:rxjs@5.5.0",
     "showdown": "github:showdownjs/showdown@1.7.2",
-    "zone.js": "npm:zone.js@0.8.16",
+    "zone.js": "npm:zone.js@0.8.18",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.1": {
-      "buffer": "npm:buffer@5.0.7"
+      "buffer": "npm:buffer@5.0.8"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -210,60 +210,66 @@ System.config({
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
-    "npm:@angular/animations@4.3.5": {
-      "@angular/core": "npm:@angular/core@4.3.5",
+    "npm:@angular/animations@4.4.6": {
+      "@angular/core": "npm:@angular/core@4.4.6",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/common@4.3.5": {
       "@angular/core": "npm:@angular/core@4.3.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/compiler@4.3.5": {
       "@angular/core": "npm:@angular/core@4.3.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/core@4.3.5": {
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "rxjs": "npm:rxjs@5.4.3",
-      "tslib": "npm:tslib@1.7.1",
-      "zone.js": "npm:zone.js@0.8.16"
+      "rxjs": "npm:rxjs@5.5.0",
+      "tslib": "npm:tslib@1.8.0",
+      "zone.js": "npm:zone.js@0.8.18"
+    },
+    "npm:@angular/core@4.4.6": {
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "rxjs": "npm:rxjs@5.5.0",
+      "tslib": "npm:tslib@1.8.0",
+      "zone.js": "npm:zone.js@0.8.18"
     },
     "npm:@angular/forms@4.3.5": {
       "@angular/common": "npm:@angular/common@4.3.5",
       "@angular/core": "npm:@angular/core@4.3.5",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.3.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/http@4.3.5": {
       "@angular/core": "npm:@angular/core@4.3.5",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.3.5",
-      "rxjs": "npm:rxjs@5.4.3",
-      "tslib": "npm:tslib@1.7.1"
+      "rxjs": "npm:rxjs@5.5.0",
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/platform-browser-dynamic@4.3.5": {
       "@angular/common": "npm:@angular/common@4.3.5",
       "@angular/compiler": "npm:@angular/compiler@4.3.5",
       "@angular/core": "npm:@angular/core@4.3.5",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.3.5",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/platform-browser@4.3.5": {
       "@angular/common": "npm:@angular/common@4.3.5",
       "@angular/core": "npm:@angular/core@4.3.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "tslib": "npm:tslib@1.7.1"
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:@angular/router@4.3.5": {
       "@angular/common": "npm:@angular/common@4.3.5",
       "@angular/core": "npm:@angular/core@4.3.5",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.3.5",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "rxjs": "npm:rxjs@5.4.3",
-      "tslib": "npm:tslib@1.7.1"
+      "rxjs": "npm:rxjs@5.5.0",
+      "tslib": "npm:tslib@1.8.0"
     },
     "npm:angular-in-memory-web-api@0.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -274,8 +280,8 @@ System.config({
       "@angular/platform-browser": "npm:@angular/platform-browser@4.3.5",
       "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@4.3.5",
       "firebase": "npm:firebase@4.3.0",
-      "rxjs": "npm:rxjs@5.4.3",
-      "zone.js": "npm:zone.js@0.8.16"
+      "rxjs": "npm:rxjs@5.5.0",
+      "zone.js": "npm:zone.js@0.8.18"
     },
     "npm:asn1.js@4.9.1": {
       "bn.js": "npm:bn.js@4.11.8",
@@ -293,23 +299,23 @@ System.config({
     "npm:base64url@2.0.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1"
     },
-    "npm:browserify-aes@1.0.6": {
+    "npm:browserify-aes@1.1.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "buffer-xor": "npm:buffer-xor@1.0.3",
       "cipher-base": "npm:cipher-base@1.0.4",
       "create-hash": "npm:create-hash@1.1.3",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "inherits": "npm:inherits@2.0.1",
+      "evp_bytestokey": "npm:evp_bytestokey@1.0.3",
+      "inherits": "npm:inherits@2.0.3",
+      "safe-buffer": "npm:safe-buffer@5.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:browserify-cipher@1.0.0": {
-      "browserify-aes": "npm:browserify-aes@1.0.6",
+      "browserify-aes": "npm:browserify-aes@1.1.1",
       "browserify-des": "npm:browserify-des@1.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "evp_bytestokey": "npm:evp_bytestokey@1.0.0"
+      "evp_bytestokey": "npm:evp_bytestokey@1.0.3"
     },
     "npm:browserify-des@1.0.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
@@ -346,7 +352,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
-    "npm:buffer@5.0.7": {
+    "npm:buffer@5.0.8": {
       "base64-js": "npm:base64-js@1.2.1",
       "ieee754": "npm:ieee754@1.1.8"
     },
@@ -379,19 +385,19 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "cipher-base": "npm:cipher-base@1.0.4",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "inherits": "npm:inherits@2.0.1",
+      "inherits": "npm:inherits@2.0.3",
       "ripemd160": "npm:ripemd160@2.0.1",
-      "sha.js": "npm:sha.js@2.4.8"
+      "sha.js": "npm:sha.js@2.4.9"
     },
     "npm:create-hmac@1.1.6": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "cipher-base": "npm:cipher-base@1.0.4",
       "create-hash": "npm:create-hash@1.1.3",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "inherits": "npm:inherits@2.0.1",
+      "inherits": "npm:inherits@2.0.3",
       "ripemd160": "npm:ripemd160@2.0.1",
       "safe-buffer": "npm:safe-buffer@5.1.1",
-      "sha.js": "npm:sha.js@2.4.8"
+      "sha.js": "npm:sha.js@2.4.9"
     },
     "npm:crypto-browserify@3.11.1": {
       "browserify-cipher": "npm:browserify-cipher@1.0.0",
@@ -400,8 +406,8 @@ System.config({
       "create-hash": "npm:create-hash@1.1.3",
       "create-hmac": "npm:create-hmac@1.1.6",
       "diffie-hellman": "npm:diffie-hellman@5.0.2",
-      "inherits": "npm:inherits@2.0.1",
-      "pbkdf2": "npm:pbkdf2@3.0.13",
+      "inherits": "npm:inherits@2.0.3",
+      "pbkdf2": "npm:pbkdf2@3.0.14",
       "public-encrypt": "npm:public-encrypt@4.0.0",
       "randombytes": "npm:randombytes@2.0.5"
     },
@@ -414,7 +420,7 @@ System.config({
       "bn.js": "npm:bn.js@4.11.8",
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "miller-rabin": "npm:miller-rabin@4.0.0",
+      "miller-rabin": "npm:miller-rabin@4.0.1",
       "randombytes": "npm:randombytes@2.0.5",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
@@ -431,15 +437,15 @@ System.config({
       "brorand": "npm:brorand@1.1.0",
       "hash.js": "npm:hash.js@1.1.3",
       "hmac-drbg": "npm:hmac-drbg@1.0.1",
-      "inherits": "npm:inherits@2.0.1",
+      "inherits": "npm:inherits@2.0.3",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
       "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
-    "npm:evp_bytestokey@1.0.0": {
+    "npm:evp_bytestokey@1.0.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
-      "create-hash": "npm:create-hash@1.1.3",
-      "crypto": "github:jspm/nodelibs-crypto@0.1.0"
+      "md5.js": "npm:md5.js@1.3.4",
+      "safe-buffer": "npm:safe-buffer@5.1.1"
     },
     "npm:faye-websocket@0.9.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
@@ -467,6 +473,12 @@ System.config({
     "npm:hash-base@2.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "inherits": "npm:inherits@2.0.3",
+      "stream": "github:jspm/nodelibs-stream@0.1.0"
+    },
+    "npm:hash-base@3.0.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.1",
+      "inherits": "npm:inherits@2.0.3",
+      "safe-buffer": "npm:safe-buffer@5.1.1",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:hash.js@1.1.3": {
@@ -541,23 +553,28 @@ System.config({
     "npm:lodash.once@4.1.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:miller-rabin@4.0.0": {
+    "npm:md5.js@1.3.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.1",
+      "hash-base": "npm:hash-base@3.0.4",
+      "inherits": "npm:inherits@2.0.3"
+    },
+    "npm:miller-rabin@4.0.1": {
       "bn.js": "npm:bn.js@4.11.8",
       "brorand": "npm:brorand@1.1.0"
     },
     "npm:parse-asn1@5.1.0": {
       "asn1.js": "npm:asn1.js@4.9.1",
-      "browserify-aes": "npm:browserify-aes@1.0.6",
+      "browserify-aes": "npm:browserify-aes@1.1.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "create-hash": "npm:create-hash@1.1.3",
-      "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-      "pbkdf2": "npm:pbkdf2@3.0.13",
+      "evp_bytestokey": "npm:evp_bytestokey@1.0.3",
+      "pbkdf2": "npm:pbkdf2@3.0.14",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:pbkdf2@3.0.13": {
+    "npm:pbkdf2@3.0.14": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "create-hash": "npm:create-hash@1.1.3",
       "create-hmac": "npm:create-hmac@1.1.6",
@@ -565,7 +582,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "ripemd160": "npm:ripemd160@2.0.1",
       "safe-buffer": "npm:safe-buffer@5.1.1",
-      "sha.js": "npm:sha.js@2.4.8"
+      "sha.js": "npm:sha.js@2.4.9"
     },
     "npm:process@0.11.10": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -603,25 +620,27 @@ System.config({
     "npm:ripemd160@2.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "hash-base": "npm:hash-base@2.0.2",
-      "inherits": "npm:inherits@2.0.1"
+      "inherits": "npm:inherits@2.0.3"
     },
-    "npm:rxjs@5.4.3": {
+    "npm:rxjs@5.5.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
+      "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "symbol-observable": "npm:symbol-observable@1.0.4"
     },
     "npm:safe-buffer@5.1.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1"
     },
-    "npm:sha.js@2.4.8": {
+    "npm:sha.js@2.4.9": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.3",
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "safe-buffer": "npm:safe-buffer@5.1.1"
     },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
-      "inherits": "npm:inherits@2.0.1",
+      "inherits": "npm:inherits@2.0.3",
       "readable-stream": "npm:readable-stream@1.1.14"
     },
     "npm:string_decoder@0.10.31": {
@@ -669,7 +688,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "url": "github:jspm/nodelibs-url@0.1.0"
     },
-    "npm:zone.js@0.8.16": {
+    "npm:zone.js@0.8.18": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",

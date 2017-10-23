@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 import { Cell } from './cell';
 import { User } from './user';
 import { CellState } from './cellState';
@@ -9,7 +10,19 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('state', [
+      state('white', style({
+        transform: 'rotateY(180deg)'
+      })),
+      state('black', style({
+        transform: 'rotateY(0)'
+      })),
+      transition('white => black', animate('500ms ease-out')),
+      transition('black => white', animate('500ms ease-in'))
+    ]) 
+  ]
 })
 
 export class AppComponent implements OnInit {
@@ -123,6 +136,7 @@ export class AppComponent implements OnInit {
             changedTurn = true;
             list.forEach((cell) => {
               cell.state = this.user.turn;
+              cell.flip = (this.user.turn == CellState.Black) ? 'black' : 'white';
             });
           }
         } 

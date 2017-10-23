@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+/* import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  */ 
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -19,9 +20,10 @@ import { ReversiService }          from './reversi.service';
   ],
   imports: [
     BrowserModule,
+  /*  BrowserAnimationsModule, */
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(environment.firebase),
+/*    AngularFireModule.initializeApp(environment.firebase), */
     AngularFireDatabaseModule,
     AppRoutingModule
   ],
